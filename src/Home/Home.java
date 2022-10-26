@@ -4,6 +4,13 @@
  */
 package Home;
 
+import CityDirectory.CityPortal;
+import Login.LoginForm;
+import PatientSystem.Patient1;
+import PatientSystem.PatientPortal;
+import PersonDirectory.PersonPortal;
+import hospitalsystem.HospitalPortal;
+
 /**
  *
  * @author mansidabriwal
@@ -27,38 +34,67 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnPatient = new javax.swing.JButton();
+        btnDoctor = new javax.swing.JButton();
+        btnSystemAdmin = new javax.swing.JButton();
+        btnCommunity = new javax.swing.JButton();
+        btnCityAdmin = new javax.swing.JButton();
+        btnHospitalAdmin = new javax.swing.JButton();
+        btnPersonPortal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Welcome to the Hospital System ");
 
-        jButton1.setText("Patient ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPatient.setText("Patient ");
+        btnPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPatientActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Doctor");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDoctor.setText("Doctor");
+        btnDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDoctorActionPerformed(evt);
             }
         });
 
-        jButton3.setText("System Admin");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSystemAdmin.setText("System Admin");
+        btnSystemAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSystemAdminActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Community Admin");
+        btnCommunity.setText("Community Admin");
+        btnCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCommunityActionPerformed(evt);
+            }
+        });
+
+        btnCityAdmin.setText("City Admin");
+        btnCityAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCityAdminActionPerformed(evt);
+            }
+        });
+
+        btnHospitalAdmin.setText("Hospital Admin");
+        btnHospitalAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalAdminActionPerformed(evt);
+            }
+        });
+
+        btnPersonPortal.setText("Person Portal");
+        btnPersonPortal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonPortalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,17 +102,21 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                        .addGap(92, 92, 92)
+                            .addComponent(btnPersonPortal, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnCityAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSystemAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                            .addComponent(btnCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,29 +125,77 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                    .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(79, Short.MAX_VALUE))
+                    .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCityAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(btnPersonPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnPatientActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDoctorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSystemAdminActionPerformed
+
+    private void btnCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunityActionPerformed
+        // TODO add your handling code here:
+        
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCommunityActionPerformed
+
+    private void btnHospitalAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalAdminActionPerformed
+        // TODO add your handling code here:
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnHospitalAdminActionPerformed
+
+    private void btnCityAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCityAdminActionPerformed
+        // TODO add your handling code here:
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCityAdminActionPerformed
+
+    private void btnPersonPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonPortalActionPerformed
+        // TODO add your handling code here:
+        LoginForm p = new LoginForm();
+        p.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPersonPortalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +233,13 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnCityAdmin;
+    private javax.swing.JButton btnCommunity;
+    private javax.swing.JButton btnDoctor;
+    private javax.swing.JButton btnHospitalAdmin;
+    private javax.swing.JButton btnPatient;
+    private javax.swing.JButton btnPersonPortal;
+    private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
