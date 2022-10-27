@@ -4,6 +4,7 @@
  */
 package Login;
 
+import CityDirectory.CityPortal;
 import CommunitySystem.CommunityPortal;
 import PatientSystem.Patient1;
 import DoctorSystem.DoctorNew;
@@ -159,6 +160,10 @@ public class LoginForm extends javax.swing.JFrame {
             dispose();
         }else if(uName.equals("person") || pass.equals("person")){
             SystemAdmin c = new SystemAdmin();
+            c.setVisible(true);
+            dispose();
+        }else if(uName.equals("cityadmin") || pass.equals("cityadmin")){
+            CityPortal c = new CityPortal();
             c.setVisible(true);
             dispose();
         }
