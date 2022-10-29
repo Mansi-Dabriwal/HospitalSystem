@@ -4,10 +4,32 @@
  */
 package CommunitySystem;
 
+import CityDirectory.City;
+
 /**
  *
  * @author mansidabriwal
  */
 public class Community {
-    
+     String communityName;
+     City city;
+     
+     
+
+    public String getCommunityName() {
+        return communityName;
+    }
+
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+     
 }

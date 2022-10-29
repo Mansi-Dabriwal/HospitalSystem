@@ -166,6 +166,14 @@ public class LoginForm extends javax.swing.JFrame {
             CityPortal c = new CityPortal();
             c.setVisible(true);
             dispose();
+        }else if(uName.equals("padmin") || pass.equals("padmin")){
+            Patient1 c = new Patient1();
+            c.setVisible(true);
+            dispose();
+        }else if(uName.equals("dadmin") || pass.equals("dadmin")){
+            DoctorNew c = new DoctorNew();
+            c.setVisible(true);
+            dispose();
         }
            
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -4,8 +4,10 @@
  */
 package CityDirectory;
 
+import CommunitySystem.CommunityDirectory;
 import Home.Home;
 import SystemAdminstration.SystemAdmin;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,7 +20,14 @@ public class CityPortal extends javax.swing.JFrame {
     /**
      * Creates new form CityPortal
      */
+    public CityPortal(CityDirectory city,CommunityDirectory community) {
+        this.city=city;
+        this.community=community;
+        initComponents();
+    }
     public CityPortal() {
+        this.city= new CityDirectory();
+        this.community= new CommunityDirectory();
         initComponents();
     }
 
@@ -223,35 +232,42 @@ public class CityPortal extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-
+        
+        City c = new City();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        //model.setRowCount(0);
-        final Object[] row= new Object[1];
+        
         if(name.getText().equals("") )
         {
-            JOptionPane.showMessageDialog(null,"PLease fill complete information");
+            JOptionPane.showMessageDialog(null,"Please fill complete information");
         }else{
-            row[0]=name.getText();
-            
-
-            model.addRow(row);
-
+            c.setCityName(name.getText());
+            city.getCity().add(c);
             name.setText("");
             JOptionPane.showMessageDialog(null,"Saved Successfully");
-
         }
+        model.setRowCount(0);
+        for(City e: city.getCity()){
+
+            Object[] row={e.getCityName() };
+            model.addRow(row);
+            
+        }
+  
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        City c = new City();
         int i = jTable1.getSelectedRow();
         if(i>=0){
+            city.getCity().remove(i);
             model.removeRow(i);
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");
         }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -268,10 +284,19 @@ public class CityPortal extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        City c = new City();
         int i = jTable1.getSelectedRow();
         
         if(i>=0){
-            model.setValueAt(name.getText(), i, 0);
+            //model.setValueAt(name.getText(), i, 0);
+            city.getCity().get(i).setCityName(name.getText());
+            model.setRowCount(0);
+            for(City e: city.getCity()){
+
+            Object[] row={e.getCityName() };
+            model.addRow(row);
+            }
+           // city.cityList.get(i).setCityName(name.getText());
             JOptionPane.showMessageDialog(null,"Updated Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first ");
@@ -342,4 +367,7 @@ public class CityPortal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField name;
     // End of variables declaration//GEN-END:variables
+//    List<CityDirectory> cityList = new ArrayList<>();
+    CityDirectory city;
+    CommunityDirectory community;
 }

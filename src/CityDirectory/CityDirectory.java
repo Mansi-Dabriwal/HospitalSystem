@@ -4,10 +4,26 @@
  */
 package CityDirectory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author mansidabriwal
  */
 public class CityDirectory {
     
+    List<City> city; 
+
+    public CityDirectory(){
+        city = new ArrayList<>();
+    }
+    public List<City> getCity() {
+        return city;
+    }
+
+    public void setCity(List<City> city) {
+        this.city = city;
+    }
+
 }

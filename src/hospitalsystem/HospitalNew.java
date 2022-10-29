@@ -18,7 +18,13 @@ public class HospitalNew extends javax.swing.JFrame {
     /**
      * Creates new form HospitalNew
      */
+    public HospitalNew(HospitalDirectory hospital) {
+        this.hospital=hospital;
+        initComponents();
+    }
+    
     public HospitalNew() {
+        this.hospital= new HospitalDirectory();
         initComponents();
     }
 
@@ -265,20 +271,31 @@ public class HospitalNew extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-
+        Hospital h = new Hospital();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         //model.setRowCount(0);
-        final Object[] row= new Object[5];
+//        final Object[] row= new Object[5];
         if(name.getText().equals("") || address.getText().equals("") || phoneNo.getText().equals("") || city.getText().equals("") || community.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"PLease fill complete information");
         }else{
-            row[0]=name.getText();
-            row[1]=phoneNo.getText();
-            row[2]=address.getText();
-            row[3]=city.getText();
-            row[4]=community.getText();
+            h.setNameOfHospital(name.getText());
+            h.setAddress(address.getText());
+            h.setCity(city.getText());
+            h.setCommunity(community.getText());
+            h.setPhoneNo(phoneNo.getText());
+            hospital.getHospital().add(h);
+//            row[1]=phoneNo.getText();
+//            row[2]=address.getText();
+//            row[3]=city.getText();
+//            row[4]=community.getText();
+//            model.addRow(row);
+            model.setRowCount(0);
+            for(Hospital e: hospital.getHospital()){
+
+            Object[] row={e.getNameOfHospital(),e.getPhoneNo(),e.getAddress(),e.getCity(), e.getCommunity()};
             model.addRow(row);
+            }
 
             name.setText("");
             phoneNo.setText("");
@@ -293,10 +310,17 @@ public class HospitalNew extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int i = jTable1.getSelectedRow();
         if(i>=0){
             model.removeRow(i);
+            hospital.getHospital().remove(i);
+            name.setText("");
+            phoneNo.setText("");
+            address.setText("");
+            city.setText("");
+            community.setText("");
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");
@@ -322,15 +346,29 @@ public class HospitalNew extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int i = jTable1.getSelectedRow();
-        //            model.setValueAt(name.getText(), i, 0);
-        //            model.setValueAt(gender.getText(), i, 1);
-        //            model.setValueAt(phoneNumber.getText(), i, 2);
+       
         if(i>=0){
-            model.setValueAt(name.getText(), i, 0);
-            model.setValueAt(phoneNo.getText(), i, 1);
-            model.setValueAt(address.getText(), i, 2);
-            model.setValueAt(city.getText(), i, 3);
-            model.setValueAt(community.getText(), i, 4);
+            
+            hospital.getHospital().get(i).setNameOfHospital(name.getText());
+            hospital.getHospital().get(i).setAddress(address.getText());
+            hospital.getHospital().get(i).setCity(city.getText());
+            hospital.getHospital().get(i).setCommunity(community.getText());
+            hospital.getHospital().get(i).setPhoneNo(phoneNo.getText());
+            
+            model.setRowCount(0);
+            for(Hospital e: hospital.getHospital()){
+
+            Object[] row={e.getNameOfHospital(),e.getPhoneNo(),e.getAddress(),e.getCity(), e.getCommunity()};
+            model.addRow(row);
+            
+            name.setText("");
+            city.setText("");
+            phoneNo.setText("");
+            address.setText("");
+            community.setText("");
+            }
+            
+            
             JOptionPane.showMessageDialog(null,"Updated Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"PLease select a row first ");
@@ -352,8 +390,8 @@ public class HospitalNew extends javax.swing.JFrame {
         name.setText(model.getValueAt(i, 0).toString());
         phoneNo.setText(model.getValueAt(i, 1).toString());
         address.setText(model.getValueAt(i, 2).toString());
-        city.setText(model.getValueAt(i, 2).toString());
-        community.setText(model.getValueAt(i, 2).toString());
+        city.setText(model.getValueAt(i, 3).toString());
+        community.setText(model.getValueAt(i, 4).toString());
 
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -434,4 +472,5 @@ public class HospitalNew extends javax.swing.JFrame {
     private javax.swing.JTextField name;
     private javax.swing.JTextField phoneNo;
     // End of variables declaration//GEN-END:variables
+    HospitalDirectory hospital;
 }

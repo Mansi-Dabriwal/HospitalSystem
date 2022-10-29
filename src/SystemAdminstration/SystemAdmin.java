@@ -10,7 +10,7 @@ import DoctorSystem.DoctorNew;
 import DoctorSystem.DoctorPortal;
 import Home.Home;
 import PatientSystem.Patient1;
-import PersonDirectory.PersonPortal;
+import PersonSystem.PersonPortal;
 import hospitalsystem.HospitalPortal;
 
 /**

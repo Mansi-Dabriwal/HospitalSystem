@@ -4,6 +4,8 @@
  */
 package DoctorSystem;
 
+import Home.Home;
+
 /**
  *
  * @author mansidabriwal
@@ -161,7 +163,9 @@ public class DoctorPortal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        Home p = new Home();
+        p.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
