@@ -4,8 +4,13 @@
  */
 package PersonSystem;
 
+import CityDirectory.CityDirectory;
+import CommunitySystem.CommunityDirectory;
+import DoctorSystem.DoctorDirectory;
 import Home.Home;
+import PatientSystem.PatientDirectory;
 import SystemAdminstration.SystemAdmin;
+import hospitalsystem.HospitalDirectory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,13 +23,23 @@ public class PersonPortal extends javax.swing.JFrame {
     /**
      * Creates new form PersonPortal
      */
-    public PersonPortal(PersonDirectory person) {
+    public PersonPortal(PersonDirectory person, HospitalDirectory hospital,PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor ) {
         this.person = person;
+        this.hospital=hospital;
+        this.patient = patient;
+        this.community =community;
+        this.city = city;
+        this.doctor = doctor;
         initComponents();
     }
     
     public PersonPortal() {
         this.person = new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient =  new PatientDirectory();
+        this.community = new CommunityDirectory();
+        this.city = new CityDirectory();
+        this.doctor = new DoctorDirectory();
         initComponents();
     }
 
@@ -52,19 +67,19 @@ public class PersonPortal extends javax.swing.JFrame {
         address = new javax.swing.JTextField();
         houseNo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        community = new javax.swing.JTextField();
+        communityN = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        jTextField9 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         gender = new javax.swing.JComboBox<>();
         cityN = new javax.swing.JComboBox<>();
         btnMainMenu = new javax.swing.JButton();
         btnSystemAdmin = new javax.swing.JButton();
+        searchBar = new javax.swing.JComboBox<>();
 
         jButton2.setText("Back to Main Menu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -165,10 +180,10 @@ public class PersonPortal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Search ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Search ");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -189,6 +204,8 @@ public class PersonPortal extends javax.swing.JFrame {
                 btnSystemAdminActionPerformed(evt);
             }
         });
+
+        searchBar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show all data", "Name", "Community" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,7 +242,7 @@ public class PersonPortal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(phoneNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                         .addComponent(houseNo)
-                        .addComponent(community)))
+                        .addComponent(communityN)))
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(329, 329, 329)
@@ -235,18 +252,19 @@ public class PersonPortal extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(98, 98, 98))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)))
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(191, 191, 191))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(214, 214, 214)
@@ -290,14 +308,14 @@ public class PersonPortal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
-                            .addComponent(community, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,8 +323,8 @@ public class PersonPortal extends javax.swing.JFrame {
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -334,7 +352,7 @@ public class PersonPortal extends javax.swing.JFrame {
         address.setText(model.getValueAt(i, 4).toString());
         houseNo.setText(model.getValueAt(i, 5).toString());
         cityN.setSelectedItem(model.getValueAt(i, 6).toString());
-        community.setText(model.getValueAt(i, 7).toString());
+        communityN.setText(model.getValueAt(i, 7).toString());
 
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -343,7 +361,7 @@ public class PersonPortal extends javax.swing.JFrame {
         Person p = new Person();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
      
-        if(name.getText().equals("") )
+        if(name.getText().equals("")|| age.getText().equals("") || address.getText().equals("") || communityN.getText().equals("") ||phoneNo.getText().equals("")|| houseNo.getText().equals("") )
         {
             JOptionPane.showMessageDialog(null,"Please fill complete information");
         }else{
@@ -352,7 +370,7 @@ public class PersonPortal extends javax.swing.JFrame {
             p.setAge(Integer.parseInt(age.getText()));
             p.setAddress(address.getText());
             p.setCity(cityN.getSelectedItem().toString());
-            p.setCommunity(community.getText());
+            p.setCommunity(communityN.getText());
             p.setGender(gender.getSelectedItem().toString());
             p.setPhoneNo(phoneNo.getText());
             p.setHouseNo(houseNo.getText());
@@ -373,7 +391,7 @@ public class PersonPortal extends javax.swing.JFrame {
             address.setText("");
             phoneNo.setText("");
             houseNo.setText("");
-            community.setText("");
+            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Saved Successfully");
 
         }
@@ -391,7 +409,7 @@ public class PersonPortal extends javax.swing.JFrame {
             address.setText("");
             phoneNo.setText("");
             houseNo.setText("");
-            community.setText("");
+            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");
@@ -406,7 +424,7 @@ public class PersonPortal extends javax.swing.JFrame {
         phoneNo.setText("");
         address.setText("");
         houseNo.setText("");
-        community.setText("");
+        communityN.setText("");
         
 
     }//GEN-LAST:event_btnClearActionPerformed
@@ -426,7 +444,7 @@ public class PersonPortal extends javax.swing.JFrame {
             person.getPerson().get(i).setAge(Integer.parseInt(age.getText()));
             person.getPerson().get(i).setAddress(address.getText());
             person.getPerson().get(i).setCity(cityN.getSelectedItem().toString());
-            person.getPerson().get(i).setCommunity(community.getText());
+            person.getPerson().get(i).setCommunity(communityN.getText());
             person.getPerson().get(i).setGender(gender.getSelectedItem().toString());
             person.getPerson().get(i).setPhoneNo(phoneNo.getText());
             person.getPerson().get(i).setHouseNo(houseNo.getText());
@@ -441,7 +459,7 @@ public class PersonPortal extends javax.swing.JFrame {
             phoneNo.setText("");
             address.setText("");
             houseNo.setText("");
-            community.setText("");
+            communityN.setText("");
             }
             
             JOptionPane.showMessageDialog(null,"Updated Successfully");
@@ -450,9 +468,44 @@ public class PersonPortal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        
+        String para = searchBar.getSelectedItem().toString();
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        
+        
+        if(para.equals("Name")){
+            System.out.println("You have selected Name");
+              String name = JOptionPane.showInputDialog("Enter your name");
+              System.out.println("Name:"+name);
+            if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter value!");
+            
+        }else{
+                for(Person e: person.getPerson()){
+                    if(e.getName().equalsIgnoreCase(name)){
+                        Object[] row={e.getName(),e.getAge(),e.getGender(),e.getPhoneNo(), e.getAddress(),e.getHouseNo() ,e.getCity(),e.getCommunity() };
+                        model.addRow(row);
+                    }
+                        
+                    }
+            }
+        }
+        
+        if(para.equals("Show all data")){
+            for(Person e: person.getPerson()){
+
+            Object[] row={e.getName(),e.getAge(),e.getGender(),e.getPhoneNo(), e.getAddress(),e.getHouseNo() ,e.getCity(),e.getCommunity() };
+            model.addRow(row);
+            
+          }
+        }
+                   
+
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
@@ -472,17 +525,15 @@ public class PersonPortal extends javax.swing.JFrame {
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
-        Home p = new Home();
-//        new Home(person).setVisible(true);
-        p.setVisible(true);
+        
+        new Home(person, hospital, patient, city,community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
     private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
-        SystemAdmin sp = new SystemAdmin();
-//        new SystemAdmin(person).setVisible(true);
-        sp.setVisible(true);
+        
+        new SystemAdmin(person,hospital,patient,city,community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSystemAdminActionPerformed
 
@@ -528,14 +579,14 @@ public class PersonPortal extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMainMenu;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cityN;
-    private javax.swing.JTextField community;
+    private javax.swing.JTextField communityN;
     private javax.swing.JComboBox<String> gender;
     private javax.swing.JTextField houseNo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -547,9 +598,14 @@ public class PersonPortal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phoneNo;
+    private javax.swing.JComboBox<String> searchBar;
     // End of variables declaration//GEN-END:variables
     PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    CommunityDirectory community;
+    CityDirectory city;
+    DoctorDirectory doctor;
 }

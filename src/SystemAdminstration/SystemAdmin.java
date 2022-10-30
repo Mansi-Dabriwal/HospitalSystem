@@ -4,13 +4,19 @@
  */
 package SystemAdminstration;
 
+import CityDirectory.CityDirectory;
 import CityDirectory.CityPortal;
+import CommunitySystem.CommunityDirectory;
 import CommunitySystem.CommunityPortal;
+import DoctorSystem.DoctorDirectory;
 import DoctorSystem.DoctorNew;
-import DoctorSystem.DoctorPortal;
+import Vital.DoctorPortal;
 import Home.Home;
 import PatientSystem.Patient1;
+import PatientSystem.PatientDirectory;
+import PersonSystem.PersonDirectory;
 import PersonSystem.PersonPortal;
+import hospitalsystem.HospitalDirectory;
 import hospitalsystem.HospitalPortal;
 
 /**
@@ -22,9 +28,30 @@ public class SystemAdmin extends javax.swing.JFrame {
     /**
      * Creates new form SystemAdmin
      */
-    public SystemAdmin() {
+     public SystemAdmin() {
+        this. person = new PersonDirectory();
+         this.hospital = new HospitalDirectory();
+         this.patient = new PatientDirectory();
+         this.community = new CommunityDirectory();
+         this.city = new CityDirectory();
+         this.doctor = new DoctorDirectory();
+         
         initComponents();
     }
+     
+    public SystemAdmin(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
+       this.person = person;
+       this.hospital=hospital;
+       this.patient = patient;
+       this.city = city;
+       this.community = community;
+       this.doctor = doctor;
+       initComponents();
+    }
+    
+   
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,52 +178,50 @@ public class SystemAdmin extends javax.swing.JFrame {
     private void btnPatientPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientPortalActionPerformed
         // TODO add your handling code here:
         
-        Patient1 p = new Patient1();
-        p.setVisible(true);
+        
+        new Patient1(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
         
     }//GEN-LAST:event_btnPatientPortalActionPerformed
 
     private void btnDoctorPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorPortalActionPerformed
         // TODO add your handling code here:
-        DoctorNew d = new DoctorNew();
-        d.setVisible(true);
+       
+        new DoctorNew(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
         
     }//GEN-LAST:event_btnDoctorPortalActionPerformed
 
     private void btnHospitalPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalPortalActionPerformed
         // TODO add your handling code here:
-        HospitalPortal h = new HospitalPortal();
-        h.setVisible(true);
+       
+        new HospitalPortal(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHospitalPortalActionPerformed
 
     private void btnCommunityPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunityPortalActionPerformed
         // TODO add your handling code here:
-        CommunityPortal c = new CommunityPortal();
-        c.setVisible(true);
+        new CommunityPortal(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCommunityPortalActionPerformed
 
     private void btnCityPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCityPortalActionPerformed
         // TODO add your handling code here:
-        CityPortal c = new CityPortal();
-        c.setVisible(true);
+        
+        new CityPortal(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCityPortalActionPerformed
 
     private void btnPersonPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonPortalActionPerformed
         // TODO add your handling code here:
-        PersonPortal p = new PersonPortal();
-        p.setVisible(true);
+        
+        new PersonPortal(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPersonPortalActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Home p = new Home();
-        p.setVisible(true);
+        new Home(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -245,4 +270,10 @@ public class SystemAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    CommunityDirectory community;
+    CityDirectory city;
+    DoctorDirectory doctor;
 }

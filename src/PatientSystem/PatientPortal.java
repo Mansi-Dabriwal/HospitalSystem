@@ -4,8 +4,13 @@
  */
 package PatientSystem;
 
+import CityDirectory.CityDirectory;
+import CommunitySystem.CommunityDirectory;
+import DoctorSystem.DoctorDirectory;
 import Home.Home;
 import Login.LoginForm;
+import PersonSystem.PersonDirectory;
+import hospitalsystem.HospitalDirectory;
 
 /**
  *
@@ -17,6 +22,22 @@ public class PatientPortal extends javax.swing.JFrame {
      * Creates new form PatientPortal
      */
     public PatientPortal() {
+        this.person = new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient = new PatientDirectory();
+        this.city = new CityDirectory();
+        this.community = new CommunityDirectory(); 
+        this.doctor = new DoctorDirectory();
+        initComponents();
+    }
+
+    public PatientPortal(PersonDirectory person,HospitalDirectory hospital,PatientDirectory patient,CityDirectory city,CommunityDirectory community, DoctorDirectory doctor) {
+        this.person = person;
+        this.hospital=hospital;
+        this.patient =  patient;
+        this.city =  city;
+        this.community =  community; 
+        this.doctor = doctor;
         initComponents();
     }
 
@@ -250,4 +271,11 @@ public class PatientPortal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    CityDirectory city;
+    CommunityDirectory community;
+    DoctorDirectory doctor;
 }
+

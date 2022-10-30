@@ -4,11 +4,17 @@
  */
 package Home;
 
+import CityDirectory.CityDirectory;
 import CityDirectory.CityPortal;
+import CommunitySystem.CommunityDirectory;
+import DoctorSystem.DoctorDirectory;
 import Login.LoginForm;
 import PatientSystem.Patient1;
+import PatientSystem.PatientDirectory;
 import PatientSystem.PatientPortal;
+import PersonSystem.PersonDirectory;
 import PersonSystem.PersonPortal;
+import hospitalsystem.HospitalDirectory;
 import hospitalsystem.HospitalPortal;
 
 /**
@@ -21,7 +27,23 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Home
      */
     public Home() {
+        this. person = new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient = new PatientDirectory();
+        this.city = new CityDirectory();
+        this.community = new CommunityDirectory();
+        this.doctor = new DoctorDirectory();
         initComponents();
+    }
+
+    public Home(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient, CityDirectory city, CommunityDirectory community,DoctorDirectory doctor) {
+       this.person = person;
+       this.hospital=hospital;
+       this.patient =  patient;
+       this.city = city;
+       this.community = community;
+       this.doctor =  doctor;
+       initComponents();
     }
 
     /**
@@ -40,7 +62,6 @@ public class Home extends javax.swing.JFrame {
         btnCommunity = new javax.swing.JButton();
         btnCityAdmin = new javax.swing.JButton();
         btnHospitalAdmin = new javax.swing.JButton();
-        btnPersonPortal = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -92,13 +113,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnPersonPortal.setText("Person Portal");
-        btnPersonPortal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPersonPortalActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -131,23 +145,28 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel1)
                         .addContainerGap(108, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPersonPortal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCityAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSystemAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(72, 72, 72)
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCityAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCommunity)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
         );
@@ -156,81 +175,67 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(59, 59, 59)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCityAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(btnPersonPortal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                            .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnHospitalAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCityAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPersonPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonPortalActionPerformed
-        // TODO add your handling code here:
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnPersonPortalActionPerformed
-
     private void btnHospitalAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalAdminActionPerformed
         // TODO add your handling code here:
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnHospitalAdminActionPerformed
 
     private void btnCityAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCityAdminActionPerformed
         // TODO add your handling code here:
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCityAdminActionPerformed
 
     private void btnCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunityActionPerformed
         // TODO add your handling code here:
 
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCommunityActionPerformed
 
     private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
 
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSystemAdminActionPerformed
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
         // TODO add your handling code here:
 
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnDoctorActionPerformed
 
     private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
         // TODO add your handling code here:
 
-        LoginForm p = new LoginForm();
-        p.setVisible(true);
+        
+        new LoginForm(person,hospital, patient, city, community,doctor).setVisible(true);
         dispose();
 
     }//GEN-LAST:event_btnPatientActionPerformed
@@ -276,10 +281,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton btnDoctor;
     private javax.swing.JButton btnHospitalAdmin;
     private javax.swing.JButton btnPatient;
-    private javax.swing.JButton btnPersonPortal;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    CityDirectory city;
+    CommunityDirectory community;
+    DoctorDirectory doctor;
 }

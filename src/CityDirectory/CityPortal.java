@@ -5,8 +5,12 @@
 package CityDirectory;
 
 import CommunitySystem.CommunityDirectory;
+import DoctorSystem.DoctorDirectory;
 import Home.Home;
+import PatientSystem.PatientDirectory;
+import PersonSystem.PersonDirectory;
 import SystemAdminstration.SystemAdmin;
+import hospitalsystem.HospitalDirectory;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,15 +24,27 @@ public class CityPortal extends javax.swing.JFrame {
     /**
      * Creates new form CityPortal
      */
-    public CityPortal(CityDirectory city,CommunityDirectory community) {
+    public CityPortal( PersonDirectory person, HospitalDirectory hospital,PatientDirectory patient,CityDirectory city,CommunityDirectory community,DoctorDirectory doctor) {
         this.city=city;
         this.community=community;
+        this.person = person;
+        this.hospital=hospital;
+        this.patient = patient;
+        this.doctor = doctor;
         initComponents();
     }
     public CityPortal() {
         this.city= new CityDirectory();
         this.community= new CommunityDirectory();
+        this.person = new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient = new PatientDirectory();
+        this.doctor = new DoctorDirectory();
         initComponents();
+    }
+
+    public CityPortal(PersonDirectory person) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -370,4 +386,8 @@ public class CityPortal extends javax.swing.JFrame {
 //    List<CityDirectory> cityList = new ArrayList<>();
     CityDirectory city;
     CommunityDirectory community;
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    DoctorDirectory doctor;
 }

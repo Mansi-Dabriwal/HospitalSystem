@@ -6,9 +6,14 @@
 package CommunitySystem;
 
 
+import CityDirectory.City;
 import CityDirectory.CityDirectory;
+import DoctorSystem.DoctorDirectory;
 import Home.Home;
+import PatientSystem.PatientDirectory;
+import PersonSystem.PersonDirectory;
 import SystemAdminstration.SystemAdmin;
+import hospitalsystem.HospitalDirectory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,16 +24,28 @@ import javax.swing.table.DefaultTableModel;
 public class CommunityPortal extends javax.swing.JFrame {
 
     /** Creates new form CommunityPortal */
-    public CommunityPortal(CityDirectory city, CommunityDirectory community) {
-//        this.cityN = city;
+    public CommunityPortal( PersonDirectory person, HospitalDirectory hospital,PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
         this.community=community;
+        this.city = city;
+        this.person = person;
+        this.hospital=hospital;
+        this.patient = patient;
+        this.doctor = doctor;
         initComponents();
     }
     public CommunityPortal() {
-//        this.cityN= new CityDirectory();
         this.community=new CommunityDirectory();
+        this.city=new CityDirectory();
+        this.person =  new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient = new PatientDirectory();
+        this.doctor = new DoctorDirectory();
         initComponents();
     }
+
+    
+
+   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -250,21 +267,25 @@ public class CommunityPortal extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Community c = new Community();
+        Community co = new Community();
+        City c = new City();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         //model.setRowCount(0);
-        final Object[] row= new Object[2];
+        //final Object[] row= new Object[2];
         if(name.getText().equals("") )
         {
-            JOptionPane.showMessageDialog(null,"PLease fill complete information");
+            JOptionPane.showMessageDialog(null,"Please fill complete information");
         }else{
 //            row[0]=name.getText();
 //            row[1]=city.getSelectedItem().toString();
-              c.setCommunityName(name.getText());
+              c.setCityName(cityN.getSelectedItem().toString());
+              city.getCity().add(c);
+              co.setCommunityName(name.getText());
+              co.setCity(c);
 //              c.setCity(cityN);
-              community.getCommunity().add(c);
+              community.getCommunity().add(co);
             
-            model.addRow(row);
+            //model.addRow(row);
 
             name.setText("");
             JOptionPane.showMessageDialog(null,"Saved Successfully");
@@ -389,4 +410,8 @@ public class CommunityPortal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     CityDirectory city;
     CommunityDirectory community;
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    DoctorDirectory doctor;
 }

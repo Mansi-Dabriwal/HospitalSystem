@@ -4,10 +4,40 @@
  */
 package Vital;
 
+import PatientSystem.Patient;
+
+
 /**
  *
  * @author mansidabriwal
  */
 public class VitalInfo {
-    
+    String bloodPressure;
+    String heartRate;
+    String respiratoryRate;
+    Patient patient;
+
+    public void setBloodPressure(String bloodPressure) {
+        this.bloodPressure = bloodPressure;
+    }
+
+    public void setHeartRate(String heartRate) {
+        this.heartRate = heartRate;
+    }
+
+    public void setRespiratoryRate(String respiratoryRate) {
+        this.respiratoryRate = respiratoryRate;
+    }
+
+    public String getBloodPressure() {
+        return bloodPressure;
+    }
+
+    public String getHeartRate() {
+        return heartRate;
+    }
+
+    public String getRespiratoryRate() {
+        return respiratoryRate;
+    }
 }

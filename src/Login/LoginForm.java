@@ -4,14 +4,20 @@
  */
 package Login;
 
+import CityDirectory.CityDirectory;
 import CityDirectory.CityPortal;
+import CommunitySystem.CommunityDirectory;
 import CommunitySystem.CommunityPortal;
+import DoctorSystem.DoctorDirectory;
 import PatientSystem.Patient1;
 import DoctorSystem.DoctorNew;
-import DoctorSystem.DoctorPortal;
+import Vital.DoctorPortal;
 import Home.Home;
+import PatientSystem.PatientDirectory;
 import PatientSystem.PatientPortal;
+import PersonSystem.PersonDirectory;
 import SystemAdminstration.SystemAdmin;
+import hospitalsystem.HospitalDirectory;
 import hospitalsystem.HospitalPortal;
 
 /**
@@ -23,9 +29,27 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
+    public LoginForm(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient, CityDirectory city, CommunityDirectory community,DoctorDirectory doctor) {
+       this.person= person;
+       this.hospital=hospital;
+       this.patient = patient;
+       this.community=community;
+       this.city = city;
+       this.doctor = doctor;
+       initComponents();
+    }
+    
     public LoginForm() {
+        this.person = new PersonDirectory();
+        this.hospital = new HospitalDirectory();
+        this.patient = new PatientDirectory();
+        this.community= new CommunityDirectory();
+        this.city = new CityDirectory();
+        this.doctor = new DoctorDirectory();
         initComponents();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,42 +161,42 @@ public class LoginForm extends javax.swing.JFrame {
 //        LoginForm l =  new LoginForm();
         
         if(uName.equals("doctor") || pass.equals("doctor")){
-            DoctorPortal d = new DoctorPortal();
-            d.setVisible(true);
+            
+            new DoctorPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("patient") || pass.equals("patient")){
-            PatientPortal p = new PatientPortal();
-            p.setVisible(true);
+            
+            new PatientPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
             
         }else if(uName.equals("community") || pass.equals("community")){
-            CommunityPortal c = new CommunityPortal();
-            c.setVisible(true);
+            
+            new CommunityPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
             
         }else if(uName.equals("hospital") || pass.equals("hospital")){
-            HospitalPortal c = new HospitalPortal();
-            c.setVisible(true);
+            
+            new HospitalPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("systemadmin") || pass.equals("systemadmin")){
-            SystemAdmin c = new SystemAdmin();
-            c.setVisible(true);
+            
+            new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("person") || pass.equals("person")){
-            SystemAdmin c = new SystemAdmin();
-            c.setVisible(true);
+            
+            new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("cityadmin") || pass.equals("cityadmin")){
-            CityPortal c = new CityPortal();
-            c.setVisible(true);
+            
+            new CityPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("padmin") || pass.equals("padmin")){
-            Patient1 c = new Patient1();
-            c.setVisible(true);
+            
+            new Patient1(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("dadmin") || pass.equals("dadmin")){
-            DoctorNew c = new DoctorNew();
-            c.setVisible(true);
+            
+            new DoctorNew(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }
            
@@ -237,4 +261,10 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField password;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
+    PersonDirectory person;
+    HospitalDirectory hospital;
+    PatientDirectory patient;
+    CommunityDirectory community;
+    CityDirectory city;
+    DoctorDirectory doctor;
 }

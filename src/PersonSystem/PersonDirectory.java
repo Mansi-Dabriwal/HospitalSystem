@@ -14,6 +14,10 @@ import java.util.List;
 public class PersonDirectory {
     
     List<Person> person; 
+    
+    public PersonDirectory(){
+        person = new ArrayList<>();
+    }
 
     public List<Person> getPerson() {
         return person;
@@ -23,7 +27,5 @@ public class PersonDirectory {
         this.person = person;
     }
 
-    public PersonDirectory(){
-        person = new ArrayList<>();
-    }
+    
 }

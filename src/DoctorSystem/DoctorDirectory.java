@@ -4,10 +4,26 @@
  */
 package DoctorSystem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author mansidabriwal
  */
 public class DoctorDirectory {
-    
+    List<Doctor> doctor; 
+
+    public List<Doctor> getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(List<Doctor> doctor) {
+        this.doctor = doctor;
+    }
+
+
+    public DoctorDirectory(){
+        doctor = new ArrayList<>();
+    }
 }
