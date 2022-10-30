@@ -4,6 +4,8 @@
  */
 package PatientSystem;
 
+import Encounter.Encounter;
+import Encounter.EncounterDirectory;
 import PersonSystem.Person;
 
 /**
@@ -14,6 +16,20 @@ public class Patient {
     
     String illness;
     Person person;
+    EncounterDirectory encounterHistory;
+    
+    public Patient(){
+        encounterHistory = new EncounterDirectory();
+    }
+
+    public EncounterDirectory getEncounterHistory() {
+        return encounterHistory;
+    }
+
+    public void setEncounterHistory(EncounterDirectory encounterHistory) {
+        this.encounterHistory = encounterHistory;
+    }
+
 
     public String getIllness() {
         return illness;

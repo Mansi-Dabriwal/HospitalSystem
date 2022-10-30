@@ -57,7 +57,7 @@ public class HospitalPortal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnPatient = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAddDoc = new javax.swing.JButton();
         btnSystemAdmin = new javax.swing.JButton();
         btnMainMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -77,11 +77,21 @@ public class HospitalPortal extends javax.swing.JFrame {
         btnPatient.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         btnPatient.setForeground(new java.awt.Color(51, 51, 51));
         btnPatient.setText("Add Patient ");
+        btnPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(204, 51, 255));
-        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("Add Doctors");
+        btnAddDoc.setBackground(new java.awt.Color(204, 51, 255));
+        btnAddDoc.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnAddDoc.setForeground(new java.awt.Color(51, 51, 51));
+        btnAddDoc.setText("Add Doctors");
+        btnAddDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDocActionPerformed(evt);
+            }
+        });
 
         btnSystemAdmin.setBackground(new java.awt.Color(204, 51, 255));
         btnSystemAdmin.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -115,7 +125,7 @@ public class HospitalPortal extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(174, 174, 174)
@@ -135,7 +145,7 @@ public class HospitalPortal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -164,9 +174,7 @@ public class HospitalPortal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Home p = new Home();
-        p.setVisible(true);
-        
+        new Home(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -182,6 +190,18 @@ public class HospitalPortal extends javax.swing.JFrame {
         new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSystemAdminActionPerformed
+
+    private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
+        // TODO add your handling code here:
+        new Patient1(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPatientActionPerformed
+
+    private void btnAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDocActionPerformed
+        // TODO add your handling code here:
+        new DoctorNew(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAddDocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,10 +239,10 @@ public class HospitalPortal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddDoc;
     private javax.swing.JButton btnMainMenu;
     private javax.swing.JButton btnPatient;
     private javax.swing.JButton btnSystemAdmin;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

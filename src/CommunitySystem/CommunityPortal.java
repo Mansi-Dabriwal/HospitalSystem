@@ -69,7 +69,7 @@ public class CommunityPortal extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnMainMenu = new javax.swing.JButton();
         btnSystemAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,10 +156,10 @@ public class CommunityPortal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Back to Main Menu");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnMainMenu.setText("Back to Main Menu");
+        btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnMainMenuActionPerformed(evt);
             }
         });
 
@@ -209,7 +209,7 @@ public class CommunityPortal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(btnMainMenu)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnSystemAdmin))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -243,7 +243,7 @@ public class CommunityPortal extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btnMainMenu)
                     .addComponent(btnSystemAdmin))
                 .addGap(12, 12, 12))
         );
@@ -342,17 +342,15 @@ public class CommunityPortal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cityNActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // TODO add your handling code here:
-        Home p = new Home();
-        p.setVisible(true);
+        new Home(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnMainMenuActionPerformed
 
     private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
-        SystemAdmin sp = new SystemAdmin();
-        sp.setVisible(true);
+        new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSystemAdminActionPerformed
 
@@ -395,10 +393,10 @@ public class CommunityPortal extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnMainMenu;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cityN;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -15,7 +15,15 @@ public class VitalInfo {
     String bloodPressure;
     String heartRate;
     String respiratoryRate;
-    Patient patient;
+//    Patient patient;
+
+//    public Patient getPatient() {
+//        return patient;
+//    }
+//
+//    public void setPatient(Patient patient) {
+//        this.patient = patient;
+//    }
 
     public void setBloodPressure(String bloodPressure) {
         this.bloodPressure = bloodPressure;

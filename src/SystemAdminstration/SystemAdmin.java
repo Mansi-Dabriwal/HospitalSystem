@@ -187,7 +187,7 @@ public class SystemAdmin extends javax.swing.JFrame {
     private void btnDoctorPortalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorPortalActionPerformed
         // TODO add your handling code here:
        
-        new DoctorNew(person, hospital, patient,city, community,doctor).setVisible(true);
+        new DoctorPortal(person, hospital, patient,city, community,doctor).setVisible(true);
         dispose();
         
     }//GEN-LAST:event_btnDoctorPortalActionPerformed

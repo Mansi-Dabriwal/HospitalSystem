@@ -304,15 +304,13 @@ public class HospitalNew extends javax.swing.JFrame {
 
     private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
-        SystemAdmin sp = new SystemAdmin();
-        sp.setVisible(true);
+        new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSystemAdminActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Home p = new Home();
-        p.setVisible(true);
+        new Home(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
