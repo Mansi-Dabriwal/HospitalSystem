@@ -61,7 +61,7 @@ public class DoctorNew extends javax.swing.JFrame {
         for(Hospital p:hospital.getHospital()){
             hospitalNames[j]=String.valueOf(p.getNameOfHospital());
             System.out.println(hospitalNames[j]);
-            i++;
+            j++;
         }
         hospitalName.setModel(new javax.swing.DefaultComboBoxModel<>(hospitalNames));
     }
@@ -431,7 +431,7 @@ public class DoctorNew extends javax.swing.JFrame {
         }else{
                 for(Doctor e: doctor.getDoctor()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(), e.getPerson().getCity() ,e.getPerson().getCommunity() ,e.getDoctorId(),e.getNameofHospital() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getPhoneNo(),e.getPerson().getAddress(),e.getPerson().getHouseNo(),e.getPerson().getCommunity(),e.getPerson().getAge()  ,e.getDoctorId(),e.getNameofHospital() };
                 model.addRow(row1);
 
             }
@@ -441,7 +441,7 @@ public class DoctorNew extends javax.swing.JFrame {
         if(para.equals("Show all data")){
             for(Doctor e: doctor.getDoctor()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(), e.getPerson().getCity() ,e.getPerson().getCommunity() ,e.getDoctorId(),e.getNameofHospital() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getPhoneNo(),e.getPerson().getAddress(),e.getPerson().getHouseNo(),e.getPerson().getCommunity(),e.getPerson().getAge()  ,e.getDoctorId(),e.getNameofHospital() };
                 model.addRow(row1);
 
             }
@@ -476,7 +476,7 @@ public class DoctorNew extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         //model.setRowCount(0);
         final Object[] row= new Object[6];
-        if(name.getText().equals("") )
+        if(name.getText().equals("") || phoneNo.getText().equals("") || age.getText().equals("") || address.getText().equals("") || houseNo.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null,"Please fill complete information");
         }else{
@@ -502,7 +502,7 @@ public class DoctorNew extends javax.swing.JFrame {
             model.setRowCount(0);
             for(Doctor e: doctor.getDoctor()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(),e.getPerson().getCommunity(),e.getPerson().getAge() ,e.getDoctorId(), e.getNameofHospital() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getPhoneNo(),e.getPerson().getAddress(),e.getPerson().getHouseNo(),e.getPerson().getCommunity(),e.getPerson().getAge() ,e.getDoctorId(), e.getNameofHospital() };
                 model.addRow(row1);
 
             }

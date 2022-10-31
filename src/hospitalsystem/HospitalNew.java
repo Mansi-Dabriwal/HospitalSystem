@@ -80,9 +80,9 @@ public class HospitalNew extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         communityN = new javax.swing.JComboBox<>();
+        searchBar = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,12 +180,14 @@ public class HospitalNew extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Search ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setText("Search ");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
+
+        searchBar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show all data" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,9 +218,10 @@ public class HospitalNew extends javax.swing.JFrame {
                                 .addGap(139, 139, 139)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(95, 95, 95)
+                                        .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(205, 205, 205)
@@ -263,8 +266,8 @@ public class HospitalNew extends javax.swing.JFrame {
                             .addComponent(jLabel6)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(125, 125, 125)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,9 +328,40 @@ public class HospitalNew extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1AncestorAdded
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        String para = searchBar.getSelectedItem().toString();
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        
+        
+        if(para.equals("Name")){
+            System.out.println("You have selected Name");
+              String name = JOptionPane.showInputDialog("Enter your name");
+              System.out.println("Name:"+name);
+            if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter value!");
+            
+        }else{
+                for(Hospital e: hospital.getHospital()){
+
+                Object[] row1={e.getNameOfHospital(),e.getAddress(),e.getPhoneNo(),e.getCommunity()};
+                model.addRow(row1);
+
+            }
+            }
+        }
+        
+        if(para.equals("Show all data")){
+            for(Hospital e: hospital.getHospital()){
+
+                Object[] row1={e.getNameOfHospital(),e.getAddress(),e.getPhoneNo(),e.getCommunity()};
+                model.addRow(row1);
+
+            }
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -476,11 +510,11 @@ public class HospitalNew extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> communityN;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -489,9 +523,9 @@ public class HospitalNew extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phoneNo;
+    private javax.swing.JComboBox<String> searchBar;
     // End of variables declaration//GEN-END:variables
     HospitalDirectory hospital;
     PersonDirectory person;

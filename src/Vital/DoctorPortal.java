@@ -158,7 +158,7 @@ public class DoctorPortal extends javax.swing.JFrame {
             }
         });
 
-        searchBar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", " " }));
+        searchBar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show all data" }));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel3.setText("Encounter History");

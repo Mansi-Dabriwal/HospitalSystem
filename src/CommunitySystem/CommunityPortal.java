@@ -277,7 +277,7 @@ public class CommunityPortal extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int i = jTable1.getSelectedRow();
         name.setText(model.getValueAt(i, 0).toString());
-//        city.setSelectedItem(model.getValueAt(i, 1).toString());
+        cityN.setSelectedItem(model.getValueAt(i, 1).toString()); 
         
 
     }//GEN-LAST:event_jTable1MouseClicked
@@ -323,6 +323,7 @@ public class CommunityPortal extends javax.swing.JFrame {
         if(i>=0){
             model.removeRow(i);
             community.getCommunity().remove(i);
+            name.setText("");
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");

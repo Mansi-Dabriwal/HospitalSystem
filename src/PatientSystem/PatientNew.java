@@ -429,7 +429,7 @@ public class PatientNew extends javax.swing.JFrame {
         }else{
                 for(Patient e: patient.getPatient()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(), e.getPerson().getCity() ,e.getPerson().getCommunity() ,e.getIllness() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo() ,e.getPerson().getCommunity() ,e.getIllness() };
                 model.addRow(row1);
 
             }
@@ -439,7 +439,7 @@ public class PatientNew extends javax.swing.JFrame {
         if(para.equals("Show all data")){
             for(Patient e: patient.getPatient()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(), e.getPerson().getCity() ,e.getPerson().getCommunity() ,e.getIllness() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo() ,e.getPerson().getCommunity() ,e.getIllness() };
                 model.addRow(row1);
 
             }
@@ -511,7 +511,7 @@ public class PatientNew extends javax.swing.JFrame {
             model.setRowCount(0);
             for(Patient e: patient.getPatient()){
 
-                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo(), e.getPerson().getCity() ,e.getPerson().getCommunity() ,e.getIllness() };
+                Object[] row1={e.getPerson().getName(),e.getPerson().getGender(),e.getPerson().getAge(),e.getPerson().getPhoneNo() ,e.getPerson().getAddress() ,e.getPerson().getHouseNo() ,e.getPerson().getCommunity() ,e.getIllness() };
                 model.addRow(row1);
 
             }
@@ -570,14 +570,13 @@ public class PatientNew extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int i = jTable1.getSelectedRow();
         name.setText(model.getValueAt(i, 0).toString());
-//        gender.setText(model.getValueAt(i, 1).toString());
+        gender.setSelectedItem(model.getValueAt(i, 1).toString());
         age.setText(model.getValueAt(i, 2).toString());
         phoneNumber.setText(model.getValueAt(i, 3).toString());
         address.setText(model.getValueAt(i, 4).toString());
         houseNo.setText(model.getValueAt(i, 5).toString());
-//        cityN.setText(model.getValueAt(i, 6).toString());
-        communityN.setSelectedItem(model.getValueAt(i, 7).toString());
-        illness.setText(model.getValueAt(i, 8).toString());
+        communityN.setSelectedItem(model.getValueAt(i, 6).toString());
+        illness.setText(model.getValueAt(i, 7).toString());
         
     }//GEN-LAST:event_jTable1MouseClicked
 

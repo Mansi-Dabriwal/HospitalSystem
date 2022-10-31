@@ -204,6 +204,8 @@ public class LoginForm extends javax.swing.JFrame {
             
             new DoctorNew(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
+        }else{
+            JOptionPane.showMessageDialog(null,"Incorrect credentials");
         }
         }    
     }//GEN-LAST:event_jButton1ActionPerformed
