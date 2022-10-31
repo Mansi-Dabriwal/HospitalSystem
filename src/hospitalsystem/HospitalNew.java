@@ -5,6 +5,7 @@
 package hospitalsystem;
 
 import CityDirectory.CityDirectory;
+import CommunitySystem.Community;
 import CommunitySystem.CommunityDirectory;
 import DoctorSystem.DoctorDirectory;
 import Home.Home;
@@ -21,9 +22,9 @@ import javax.swing.table.DefaultTableModel;
 public class HospitalNew extends javax.swing.JFrame {
 
     /**
-     * Creates new form HospitalNew
+     * Creates new form HospitalNew   
      */
-    public HospitalNew(HospitalDirectory hospital, PersonDirectory person, PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
+    public HospitalNew(PersonDirectory person,HospitalDirectory hospital, PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
         this.hospital=hospital;
         this.person =  person;
         this.community =community;
@@ -32,6 +33,15 @@ public class HospitalNew extends javax.swing.JFrame {
         this.doctor = doctor;
  
         initComponents();
+        String[] communityNames = new String[community.getCommunity().size()];
+        int i =0;
+        
+        for(Community p:community.getCommunity()){
+            communityNames[i]=String.valueOf(p.getCommunityName());
+            System.out.println(communityNames[i]);
+            i++;
+        }
+        communityN.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
     }
     
     public HospitalNew() {
@@ -66,15 +76,13 @@ public class HospitalNew extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cityN = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        communityN = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        communityN = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +96,7 @@ public class HospitalNew extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Phone number", "Address", "City", "Community"
+                "Name", "Phone number", "Address", "Community"
             }
         ));
         jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -138,9 +146,6 @@ public class HospitalNew extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel5.setText("Community");
-
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jLabel4.setText("City");
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -196,17 +201,13 @@ public class HospitalNew extends javax.swing.JFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
+                                    .addComponent(jLabel5))
                                 .addGap(64, 64, 64)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cityN)
-                                    .addComponent(address, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(address, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                                     .addComponent(phoneNo, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(101, 101, 101)
-                                .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(name)
+                                    .addComponent(communityN, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(263, 263, 263)))
@@ -259,11 +260,7 @@ public class HospitalNew extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(cityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,18 +269,17 @@ public class HospitalNew extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel5))
-                    .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(btnSystemAdmin))
-                .addContainerGap(5419, Short.MAX_VALUE))
+                .addContainerGap(5415, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -321,8 +317,8 @@ public class HospitalNew extends javax.swing.JFrame {
         name.setText(model.getValueAt(i, 0).toString());
         phoneNo.setText(model.getValueAt(i, 1).toString());
         address.setText(model.getValueAt(i, 2).toString());
-        cityN.setText(model.getValueAt(i, 3).toString());
-        communityN.setText(model.getValueAt(i, 4).toString());
+        communityN.setSelectedItem(model.getValueAt(i, 3).toString());
+//        communityN.setText(model.getValueAt(i, 4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
@@ -342,8 +338,8 @@ public class HospitalNew extends javax.swing.JFrame {
 
             hospital.getHospital().get(i).setNameOfHospital(name.getText());
             hospital.getHospital().get(i).setAddress(address.getText());
-            hospital.getHospital().get(i).setCity(cityN.getText());
-            hospital.getHospital().get(i).setCommunity(communityN.getText());
+            hospital.getHospital().get(i).setCity(communityN.getSelectedItem().toString());
+//            hospital.getHospital().get(i).setCommunity(communityN.getText());
             hospital.getHospital().get(i).setPhoneNo(phoneNo.getText());
 
             model.setRowCount(0);
@@ -353,10 +349,10 @@ public class HospitalNew extends javax.swing.JFrame {
                 model.addRow(row);
 
                 name.setText("");
-                cityN.setText("");
+//                cityN.setText("");
                 phoneNo.setText("");
                 address.setText("");
-                communityN.setText("");
+//                communityN.setText("");
             }
 
             JOptionPane.showMessageDialog(null,"Updated Successfully");
@@ -373,10 +369,10 @@ public class HospitalNew extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         name.setText("");
-        cityN.setText("");
+//        cityN.setText("");
         phoneNo.setText("");
         address.setText("");
-        communityN.setText("");
+//        communityN.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -390,8 +386,8 @@ public class HospitalNew extends javax.swing.JFrame {
             name.setText("");
             phoneNo.setText("");
             address.setText("");
-            cityN.setText("");
-            communityN.setText("");
+//            cityN.setText("");
+//            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");
@@ -404,14 +400,14 @@ public class HospitalNew extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         //model.setRowCount(0);
         //        final Object[] row= new Object[5];
-        if(name.getText().equals("") || address.getText().equals("") || phoneNo.getText().equals("") || cityN.getText().equals("") || communityN.getText().equals(""))
+        if(name.getText().equals("") || address.getText().equals("") || phoneNo.getText().equals("") )
         {
             JOptionPane.showMessageDialog(null,"PLease fill complete information");
         }else{
             h.setNameOfHospital(name.getText());
             h.setAddress(address.getText());
-            h.setCity(cityN.getText());
-            h.setCommunity(communityN.getText());
+            h.setCity(communityN.getSelectedItem().toString());
+//            h.setCommunity(communityN.getText());
             h.setPhoneNo(phoneNo.getText());
             hospital.getHospital().add(h);
             //            row[1]=phoneNo.getText();
@@ -429,8 +425,8 @@ public class HospitalNew extends javax.swing.JFrame {
             name.setText("");
             phoneNo.setText("");
             address.setText("");
-            cityN.setText("");
-            communityN.setText("");
+//            cityN.setText("");
+//            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Saved Successfully");
 
         }
@@ -482,14 +478,12 @@ public class HospitalNew extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JTextField cityN;
-    private javax.swing.JTextField communityN;
+    private javax.swing.JComboBox<String> communityN;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

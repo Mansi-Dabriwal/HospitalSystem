@@ -9,7 +9,7 @@ import CommunitySystem.CommunityDirectory;
 import DoctorSystem.DoctorDirectory;
 import DoctorSystem.DoctorNew;
 import Home.Home;
-import PatientSystem.Patient1;
+import PatientSystem.PatientNew;
 import PatientSystem.PatientDirectory;
 import PersonSystem.PersonDirectory;
 import SystemAdminstration.SystemAdmin;
@@ -26,7 +26,7 @@ public class HospitalPortal extends javax.swing.JFrame {
     
 
     
-    public HospitalPortal(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient,CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
+    public HospitalPortal(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient, CityDirectory city, CommunityDirectory community, DoctorDirectory doctor) {
         this.person=person;
         this.hospital=hospital;
         this.patient = patient;
@@ -61,6 +61,7 @@ public class HospitalPortal extends javax.swing.JFrame {
         btnSystemAdmin = new javax.swing.JButton();
         btnMainMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnHospital = new javax.swing.JButton();
 
         jButton3.setText("Back to Main Menu");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -117,37 +118,53 @@ public class HospitalPortal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Hospital System");
 
+        btnHospital.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnHospital.setText("Add Hospital");
+        btnHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHospitalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(btnMainMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSystemAdmin)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(btnMainMenu))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSystemAdmin))
                 .addGap(44, 44, 44))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(174, 174, 174)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
+                    .addComponent(btnPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMainMenu)
                     .addComponent(btnSystemAdmin))
@@ -193,7 +210,7 @@ public class HospitalPortal extends javax.swing.JFrame {
 
     private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
         // TODO add your handling code here:
-        new Patient1(person, hospital, patient, city, community,doctor).setVisible(true);
+        new PatientNew(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPatientActionPerformed
 
@@ -202,6 +219,13 @@ public class HospitalPortal extends javax.swing.JFrame {
         new DoctorNew(person, hospital, patient, city, community,doctor).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAddDocActionPerformed
+
+    private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
+        // TODO add your handling code here:
+        new HospitalNew(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    
+    }//GEN-LAST:event_btnHospitalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +264,7 @@ public class HospitalPortal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDoc;
+    private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnMainMenu;
     private javax.swing.JButton btnPatient;
     private javax.swing.JButton btnSystemAdmin;

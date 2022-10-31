@@ -8,13 +8,9 @@ import CityDirectory.CityDirectory;
 import CommunitySystem.CommunityDirectory;
 import DoctorSystem.DoctorDirectory;
 import Home.Home;
-import Login.LoginForm;
-import PersonSystem.Person;
 import PersonSystem.PersonDirectory;
+import SystemAdminstration.SystemAdmin;
 import hospitalsystem.HospitalDirectory;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,28 +19,28 @@ import javax.swing.table.DefaultTableModel;
 public class PatientPortal extends javax.swing.JFrame {
 
     /**
-     * Creates new form PatientPortal
+     * Creates new form PatientP
      */
     public PatientPortal() {
-        this.person = new PersonDirectory();
+        this.person= new PersonDirectory();
         this.hospital = new HospitalDirectory();
         this.patient = new PatientDirectory();
+        this.community = new CommunityDirectory();
         this.city = new CityDirectory();
-        this.community = new CommunityDirectory(); 
         this.doctor = new DoctorDirectory();
         initComponents();
     }
 
-    public PatientPortal(PersonDirectory person,HospitalDirectory hospital,PatientDirectory patient,CityDirectory city,CommunityDirectory community, DoctorDirectory doctor) {
-        this.person = person;
+    public PatientPortal(PersonDirectory person, HospitalDirectory hospital, PatientDirectory patient, CityDirectory city,CommunityDirectory community,DoctorDirectory doctor) {
+        this.person=person;
         this.hospital=hospital;
-        this.patient =  patient;
-        this.city =  city;
-        this.community =  community; 
-        this.doctor = doctor;
+        this.patient = patient;
+        this.community = community;
+        this.city = city;
+        this.doctor = doctor; 
         initComponents();
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,25 +50,31 @@ public class PatientPortal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        searchBar = new javax.swing.JTextField();
-        name = new javax.swing.JTextField();
+        btnPastHist = new javax.swing.JButton();
+        btnAppointment = new javax.swing.JButton();
         btnMainMenu = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        btnSystemAdmin = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Patient Portal");
 
-        jLabel2.setText("Name ");
-
-        searchBar.addActionListener(new java.awt.event.ActionListener() {
+        btnPastHist.setText("Check past history");
+        btnPastHist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBarActionPerformed(evt);
+                btnPastHistActionPerformed(evt);
+            }
+        });
+
+        btnAppointment.setText("Book an appointment");
+        btnAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointmentActionPerformed(evt);
             }
         });
 
@@ -83,77 +85,61 @@ public class PatientPortal extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+        btnSystemAdmin.setText("Back to System Admin");
+        btnSystemAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                btnSystemAdminActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Blood Pressure", "Heart Rate", "Respiratory Rate", "Date of Appointment"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel1)
+                        .addGap(48, 178, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAppointment)
+                    .addComponent(btnPastHist))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
+                .addComponent(btnPastHist)
+                .addGap(30, 30, 30)
+                .addComponent(btnAppointment)
+                .addGap(82, 82, 82)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMainMenu)
+                    .addComponent(btnSystemAdmin))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnSearch)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(54, 54, 54)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(309, 309, 309))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnMainMenu)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 222, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnMainMenu)
-                .addGap(20, 20, 20))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -165,61 +151,24 @@ public class PatientPortal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
-    private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
+    private void btnSystemAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSystemAdminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchBarActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSystemAdminActionPerformed
+
+    private void btnPastHistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPastHistActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        System.out.println("heyyyy");
-        name.setText(searchBar.getText());
-        int i=0;
-        for(Patient e: patient.getPatient()){
-            System.out.println(e.getPerson().getName());
-                if(e.getPerson().getName().equals(searchBar.getText())){
-                    Object[] row = {e.getEncounterHistory().getEncounter().get(i).getVital().getBloodPressure(),e.getEncounterHistory().getEncounter().get(i).getVital().getHeartRate(),e.getEncounterHistory().getEncounter().get(i).getVital().getRespiratoryRate(), e.getEncounterHistory().getEncounter().get(i).getDateOfAppointement()};
-                    model.addRow(row);
-                    System.out.println("BP"+e.getEncounterHistory().getEncounter().get(i).getVital().getBloodPressure());
-                    i++;   
-                }
-                 
-            }
-        
-//        List<Patient>pat = patient.getPatient().stream().filter(patient->patient.getPerson().getName().equals(searchBar.getText())).collect(Collectors.toList());
-//        if(pat.size()>0){
-//            Patient pa = pat.get(0);
-//            System.out.println("Person"+pa.getPerson().getName());
-//            Person person =pa.getPerson();
-//            name.setText(person.getName());
-////            age.setText(person.getAge().toString());
-//            int i=0;
-//            for(Patient p: patient.getPatient()){
-//                Object[] row = {
-//                    p.getEncounterHistory().getEncounter().get(i).getVital().getBloodPressure(),p.getEncounterHistory().getEncounter().get(i).getVital().getHeartRate(),p.getEncounterHistory().getEncounter().get(i).getVital().getRespiratoryRate(), p.getEncounterHistory().getEncounter().get(i).getDateOfAppointement()
-//                };
-//                model.addRow(row);
-//                i++;
-//            }
-//        }
-//        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-//        List<Patient> pat = patient.getPatient().stream().filter(patient->patient.getPerson().getName().equals(searchBar.getText())).collect(Collectors.toList());
-//        if(pat.size()>0){
-//                  Patient pa =pat.get(0);
-//                  Person person = pa.getPerson();
-//                  name.setText(person.getName());
-////                  age.setText(person.getAge().toString());
-//                  int i=0;
-//                  for(Patient e: patient.getPatient()){
-//                      Object[] row1={ e.getEncounterHistory().getEncounter().get(i).getVital().getBloodPressure(),e.getEncounterHistory().getEncounter().get(i).getVital().getHeartRate(),e.getEncounterHistory().getEncounter().get(i).getVital().getRespiratoryRate())};                   
-//                      model.addRow(row1);
-//                      i++;
-//                      
-//                  }
-//                  
-//                  
-//    }          
-    }//GEN-LAST:event_btnSearchActionPerformed
+        new PatientHistory(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPastHistActionPerformed
+
+    private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
+        // TODO add your handling code here:
+        new PatientAppointment(person, hospital, patient, city, community,doctor).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAppointmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,6 +196,7 @@ public class PatientPortal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PatientPortal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -257,20 +207,18 @@ public class PatientPortal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnMainMenu;
-    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnPastHist;
+    private javax.swing.JButton btnSystemAdmin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField name;
-    private javax.swing.JTextField searchBar;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-    PersonDirectory person;
     HospitalDirectory hospital;
+    PersonDirectory person;
     PatientDirectory patient;
     CityDirectory city;
     CommunityDirectory community;
     DoctorDirectory doctor;
 }
-

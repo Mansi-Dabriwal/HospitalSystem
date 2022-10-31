@@ -5,6 +5,7 @@
 package PersonSystem;
 
 import CityDirectory.CityDirectory;
+import CommunitySystem.Community;
 import CommunitySystem.CommunityDirectory;
 import DoctorSystem.DoctorDirectory;
 import Home.Home;
@@ -30,7 +31,17 @@ public class PersonPortal extends javax.swing.JFrame {
         this.community =community;
         this.city = city;
         this.doctor = doctor;
+       
         initComponents();
+        String[] communityNames = new String[community.getCommunity().size()];
+        int i =0;
+        
+        for(Community p:community.getCommunity()){
+            communityNames[i]=String.valueOf(p.getCommunityName());
+            System.out.println(communityNames[i]);
+            i++;
+        }
+        communityN.setModel(new javax.swing.DefaultComboBoxModel<>(communityNames));
     }
     
     public PersonPortal() {
@@ -59,7 +70,6 @@ public class PersonPortal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         age = new javax.swing.JTextField();
@@ -67,7 +77,6 @@ public class PersonPortal extends javax.swing.JFrame {
         address = new javax.swing.JTextField();
         houseNo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        communityN = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
@@ -76,10 +85,10 @@ public class PersonPortal extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         gender = new javax.swing.JComboBox<>();
-        cityN = new javax.swing.JComboBox<>();
         btnMainMenu = new javax.swing.JButton();
         btnSystemAdmin = new javax.swing.JButton();
         searchBar = new javax.swing.JComboBox<>();
+        communityN = new javax.swing.JComboBox<>();
 
         jButton2.setText("Back to Main Menu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,8 +111,6 @@ public class PersonPortal extends javax.swing.JFrame {
         jLabel5.setText("House no.");
 
         jLabel6.setText("Phone No.");
-
-        jLabel7.setText("City");
 
         jLabel8.setText("Community");
 
@@ -128,7 +135,7 @@ public class PersonPortal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Age", "Gender", "Phone no.", "Address", "House no.", "City", "Community"
+                "Name", "Age", "Gender", "Phone no.", "Address", "House no.", "Community"
             }
         ));
         jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -189,8 +196,6 @@ public class PersonPortal extends javax.swing.JFrame {
 
         gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male", "Other", " " }));
 
-        cityN.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "Salem", "Worcester", "Lowell" }));
-
         btnMainMenu.setText("Back to Main Menu");
         btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,43 +212,12 @@ public class PersonPortal extends javax.swing.JFrame {
 
         searchBar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show all data", "Name", "Community" }));
 
+        communityN.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel2))
-                        .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(name)
-                            .addComponent(gender, 0, 103, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(age, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(phoneNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(houseNo)
-                        .addComponent(communityN)))
-                .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(329, 329, 329)
                 .addComponent(jLabel1)
@@ -254,32 +228,67 @@ public class PersonPortal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(39, 39, 39)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(214, 214, 214)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(93, 93, 93)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(191, 191, 191))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)))
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(118, 118, 118))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(btnSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnMainMenu)
                 .addGap(126, 126, 126))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2))
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(name)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(address)
+                            .addComponent(communityN, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(239, 239, 239)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(age, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(phoneNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .addComponent(houseNo)))
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,19 +312,17 @@ public class PersonPortal extends javax.swing.JFrame {
                             .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(houseNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(communityN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,8 +358,8 @@ public class PersonPortal extends javax.swing.JFrame {
         phoneNo.setText(model.getValueAt(i, 3).toString());
         address.setText(model.getValueAt(i, 4).toString());
         houseNo.setText(model.getValueAt(i, 5).toString());
-        cityN.setSelectedItem(model.getValueAt(i, 6).toString());
-        communityN.setText(model.getValueAt(i, 7).toString());
+        communityN.setSelectedItem(model.getValueAt(i, 6).toString());
+//        communityN.setText(model.getValueAt(i, 7).toString());
 
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -360,23 +367,60 @@ public class PersonPortal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Person p = new Person();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-     
-        if(name.getText().equals("")|| age.getText().equals("") || address.getText().equals("") || communityN.getText().equals("") ||phoneNo.getText().equals("")|| houseNo.getText().equals("") )
+        int count =1;
+        
+        if(name.getText().equals("")|| age.getText().equals("") || address.getText().equals("")  ||phoneNo.getText().equals("")|| houseNo.getText().equals("") )
         {
             JOptionPane.showMessageDialog(null,"Please fill complete information");
         }else{
-
-            p.setName(name.getText());
-            p.setAge(Integer.parseInt(age.getText()));
-            p.setAddress(address.getText());
-            p.setCity(cityN.getSelectedItem().toString());
-            p.setCommunity(communityN.getText());
-            p.setGender(gender.getSelectedItem().toString());
-            p.setPhoneNo(phoneNo.getText());
-            p.setHouseNo(houseNo.getText());
             
-                    
-            person.getPerson().add(p);
+           if(!name.getText().matches("^[a-zA-Z]+$")) {
+            System.out.println("Invalid name");
+            JOptionPane.showMessageDialog(this, "Incorrect name!");
+            count=0;
+           }else{
+             p.setName(name.getText());
+            }
+             
+           if (!age.getText().matches("[0-9]+")) {
+            System.out.println("Invalid number");
+            JOptionPane.showMessageDialog(this, "Incorrect age!");
+            count=0;
+            }else{
+             p.setAge(Integer.parseInt(age.getText()));
+            }
+           
+//            p.setName(name.getText());
+//            p.setAge(Integer.parseInt(age.getText()));
+            p.setAddress(address.getText());
+//            p.setCity(cityN.getSelectedItem().toString());
+            
+            
+            p.setCommunity(communityN.getSelectedItem().toString());
+            p.setGender(gender.getSelectedItem().toString());
+            
+            String phoneNumber = phoneNo.getText();
+            int length = phoneNumber.length();
+            if(length==10 && phoneNo.getText().matches("[0-9]+")){
+               p.setPhoneNo(phoneNo.getText());
+            }else{
+                count = 0;
+                JOptionPane.showMessageDialog(this, "Incorrect Phone number!");
+            }
+        
+            
+//            p.setPhoneNo(phoneNo.getText());
+            if (!houseNo.getText().matches("[0-9]+")) {
+                System.out.println("Invalid number");
+                JOptionPane.showMessageDialog(this, "Incorrect house number!");
+                count=0;
+            }else{
+             p.setHouseNo(houseNo.getText());
+            }
+//            p.setHouseNo(houseNo.getText());
+            System.out.println(count);
+            if(count==1){
+                person.getPerson().add(p);
 
             model.setRowCount(0);
             for(Person e: person.getPerson()){
@@ -391,8 +435,10 @@ public class PersonPortal extends javax.swing.JFrame {
             address.setText("");
             phoneNo.setText("");
             houseNo.setText("");
-            communityN.setText("");
+//            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Saved Successfully");
+            }        
+            
 
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -409,7 +455,7 @@ public class PersonPortal extends javax.swing.JFrame {
             address.setText("");
             phoneNo.setText("");
             houseNo.setText("");
-            communityN.setText("");
+//            communityN.setText("");
             JOptionPane.showMessageDialog(null,"Deleted Successfully");
         }else{
             JOptionPane.showMessageDialog(null,"Please select a row first");
@@ -424,7 +470,7 @@ public class PersonPortal extends javax.swing.JFrame {
         phoneNo.setText("");
         address.setText("");
         houseNo.setText("");
-        communityN.setText("");
+//        communityN.setText("");
         
 
     }//GEN-LAST:event_btnClearActionPerformed
@@ -443,8 +489,8 @@ public class PersonPortal extends javax.swing.JFrame {
             person.getPerson().get(i).setName(name.getText());
             person.getPerson().get(i).setAge(Integer.parseInt(age.getText()));
             person.getPerson().get(i).setAddress(address.getText());
-            person.getPerson().get(i).setCity(cityN.getSelectedItem().toString());
-            person.getPerson().get(i).setCommunity(communityN.getText());
+            person.getPerson().get(i).setCity(communityN.getSelectedItem().toString());
+//            person.getPerson().get(i).setCommunity(communityN.getText());
             person.getPerson().get(i).setGender(gender.getSelectedItem().toString());
             person.getPerson().get(i).setPhoneNo(phoneNo.getText());
             person.getPerson().get(i).setHouseNo(houseNo.getText());
@@ -459,7 +505,7 @@ public class PersonPortal extends javax.swing.JFrame {
             phoneNo.setText("");
             address.setText("");
             houseNo.setText("");
-            communityN.setText("");
+//            communityN.setText("");
             }
             
             JOptionPane.showMessageDialog(null,"Updated Successfully");
@@ -582,8 +628,7 @@ public class PersonPortal extends javax.swing.JFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSystemAdmin;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cityN;
-    private javax.swing.JTextField communityN;
+    private javax.swing.JComboBox<String> communityN;
     private javax.swing.JComboBox<String> gender;
     private javax.swing.JTextField houseNo;
     private javax.swing.JButton jButton2;
@@ -593,7 +638,6 @@ public class PersonPortal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;

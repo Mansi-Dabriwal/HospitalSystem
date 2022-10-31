@@ -9,16 +9,19 @@ import CityDirectory.CityPortal;
 import CommunitySystem.CommunityDirectory;
 import CommunitySystem.CommunityPortal;
 import DoctorSystem.DoctorDirectory;
-import PatientSystem.Patient1;
+import PatientSystem.PatientNew;
 import DoctorSystem.DoctorNew;
 import Vital.DoctorPortal;
 import Home.Home;
 import PatientSystem.PatientDirectory;
+import PatientSystem.PatientHistory;
 import PatientSystem.PatientPortal;
 import PersonSystem.PersonDirectory;
+import PersonSystem.PersonPortal;
 import SystemAdminstration.SystemAdmin;
 import hospitalsystem.HospitalDirectory;
 import hospitalsystem.HospitalPortal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -157,6 +160,9 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String uName = userName.getText();
         String pass = password.getText();
+        if(uName.equals("")|| pass.equals("")){
+            JOptionPane.showMessageDialog(null,"Please fill complete information");
+        }else{
         
 //        LoginForm l =  new LoginForm();
         
@@ -184,7 +190,7 @@ public class LoginForm extends javax.swing.JFrame {
             dispose();
         }else if(uName.equals("person") || pass.equals("person")){
             
-            new SystemAdmin(person, hospital, patient, city, community,doctor).setVisible(true);
+            new PersonPortal(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("cityadmin") || pass.equals("cityadmin")){
             
@@ -192,14 +198,14 @@ public class LoginForm extends javax.swing.JFrame {
             dispose();
         }else if(uName.equals("padmin") || pass.equals("padmin")){
             
-            new Patient1(person, hospital, patient, city, community,doctor).setVisible(true);
+            new PatientNew(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }else if(uName.equals("dadmin") || pass.equals("dadmin")){
             
             new DoctorNew(person, hospital, patient, city, community,doctor).setVisible(true);
             dispose();
         }
-           
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed

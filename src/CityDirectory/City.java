@@ -11,9 +11,6 @@ package CityDirectory;
 public class City {
     String cityName;
 
-    public City() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public String getCityName() {
         return cityName;
